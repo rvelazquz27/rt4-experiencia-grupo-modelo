@@ -16,9 +16,9 @@
 <script>
 try {
   const savedTheme = sessionStorage.getItem('infobip-microsite-theme');
-  document.documentElement.dataset.theme = (savedTheme === 'light' || savedTheme === 'dark') ? savedTheme : 'dark';
+  document.documentElement.dataset.theme = (savedTheme === 'light' || savedTheme === 'dark') ? savedTheme : 'light';
 } catch (error) {
-  document.documentElement.dataset.theme = 'dark';
+  document.documentElement.dataset.theme = 'light';
 }
 </script>
 <style>
@@ -7063,6 +7063,43 @@ img {
 h1,h2,h3,.hero h1,.section-title{font-family:var(--font-heading)!important;letter-spacing:-.01em}
 :root[data-theme="light"] .rt4-logo-w{display:none!important}:root[data-theme="light"] .rt4-logo-d{display:block!important}
 </style>
+<style id="rt4-look">
+/* ===== Look RT4 (paleta de la versión anterior): solo estilos, sin tocar funciones ===== */
+:root{--ib-orange:#25B3DB;--ib-peach:#EEF6F9;--rt4-blue:#1680C4;--rt4-deep:#0D70A9;--rt4-bright:#46E0EE;--rt4-slate:#313C41;--rt4-char:#3C3C3C;--ib-dark:#1c2226;--ib-black:#2a3236}
+:root[data-theme="light"]{
+  --page-bg:#F5F7F8;--page-text:#1c2226;--text-secondary:#4B5860;--text-tertiary:#5d6b73;--text-muted:#66737B;--text-faint:#8a969d;
+  --line-strong:#D9E1E5;--surface-elevated:#FFFFFF;--surface-input:#FFFFFF;--glass-bg:#FFFFFF;--glass-border:#E4E9EC;
+  --nav-scrolled-bg:rgba(255,255,255,.9);--button-secondary-border:#D9E1E5;--button-secondary-border-hover:#25B3DB;--button-secondary-bg-hover:#EEF6F9;
+}
+:root[data-theme="dark"]{--page-bg:#1c2226;--nav-scrolled-bg:rgba(28,34,38,.92);--glass-bg:rgba(255,255,255,.035);--glass-border:rgba(255,255,255,.09)}
+body{font-family:'Inter',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif}
+/* hero en pizarra RT4 con brillo cian, como antes */
+.hero{background:radial-gradient(900px 520px at 78% 30%,rgba(37,179,219,.22),transparent 60%),linear-gradient(160deg,#2a3236 0%,#313C41 55%,#3C3C3C 100%)!important;
+  --page-text:#fff;--text-secondary:rgba(255,255,255,.75);--text-tertiary:rgba(255,255,255,.65);--text-muted:rgba(255,255,255,.6);--text-faint:rgba(255,255,255,.4);
+  --glass-bg:rgba(255,255,255,.05);--glass-border:rgba(255,255,255,.12);color:#fff;padding-top:130px!important;padding-bottom:80px!important}
+.hero:after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,rgba(70,224,238,.5),transparent)}
+.hero h1 span,.hero h1 em,.hero .gradient-text{background:linear-gradient(90deg,#46E0EE,#25B3DB)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important}
+/* navegación: transparente sobre el hero, blanca al hacer scroll */
+.nav:not(.scrolled){color:#fff}
+.nav:not(.scrolled) a:not(.nav-cta){color:rgba(255,255,255,.85)!important}
+.nav:not(.scrolled) .rt4-logo-w{display:block!important}.nav:not(.scrolled) .rt4-logo-d{display:none!important}
+:root[data-theme="light"] .nav.scrolled{box-shadow:0 1px 0 #E4E9EC}
+/* botones en píldora cian */
+.btn-primary,.nav-cta,.send-btn,.sticky-cta__button{border-radius:999px!important;background:#25B3DB!important;color:#fff!important}
+.btn-primary:hover,.nav-cta:hover,.send-btn:hover{background:#1680C4!important;box-shadow:0 8px 24px rgba(22,128,196,.25)!important}
+.btn-secondary{border-radius:999px!important}
+/* tarjetas limpias con sombra suave en tema claro */
+:root[data-theme="light"] .pain-card,:root[data-theme="light"] .proof-card,:root[data-theme="light"] .diff-card,:root[data-theme="light"] .why-card,
+:root[data-theme="light"] .demo-panel,:root[data-theme="light"] .panel,:root[data-theme="light"] .cta-box{box-shadow:0 1px 2px rgba(16,24,32,.04),0 8px 28px rgba(16,24,32,.06);border-radius:18px}
+/* encabezados Montserrat */
+h1,h2,h3,.section-title{font-family:'Montserrat','Inter',sans-serif!important;letter-spacing:-.01em}
+.section-label,.eyebrow,.section-tag{color:#25B3DB!important;letter-spacing:.16em}
+/* sección final en pizarra como antes */
+.cta-section{background:linear-gradient(160deg,#2a3236,#313C41 60%,#3C3C3C);--page-text:#fff;--text-secondary:rgba(255,255,255,.75);--text-muted:rgba(255,255,255,.6);--glass-bg:rgba(255,255,255,.05);--glass-border:rgba(255,255,255,.12);color:#fff}
+.footer{color:#66737B}
+.cta-section p,.cta-section .cta-subtitle,.cta-section span{color:rgba(255,255,255,.78)!important}.cta-section h2{color:#fff!important}
+</style>
+
 </head>
 <body>
 
@@ -7772,7 +7809,7 @@ const THEME_STORAGE_KEY = 'infobip-microsite-theme';
 const systemThemeMedia = window.matchMedia('(prefers-color-scheme: dark)');
 
 function getPreferredTheme() {
-  return 'dark';
+  return 'light';
 }
 
 function getStoredTheme() {
